@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TurnKey Tree Removal</title>
+<meta name='robots' content='max-image-preview:large' />
+
+
+
+<style id="wp-block-library-inline-css">
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}:root .has-text-align-center{text-align:center}:root .has-text-align-left{text-align:left}:root .has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{word-wrap:normal!important;border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px;word-break:normal!important}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style^=border-color],[style*=";border-color"],[style*="; border-color"]){border-style:solid}html :where([style^=border-top-color],[style*=";border-top-color"],[style*="; border-top-color"]){border-top-style:solid}html :where([style^=border-right-color],[style*=";border-right-color"],[style*="; border-right-color"]){border-right-style:solid}html :where([style^=border-bottom-color],[style*=";border-bottom-color"],[style*="; border-bottom-color"]){border-bottom-style:solid}html :where([style^=border-left-color],[style*=";border-left-color"],[style*="; border-left-color"]){border-left-style:solid}html :where([style^=border-width],[style*=";border-width"],[style*="; border-width"]){border-style:solid}html :where([style^=border-top-width],[style*=";border-top-width"],[style*="; border-top-width"]){border-top-style:solid}html :where([style^=border-right-width],[style*=";border-right-width"],[style*="; border-right-width"]){border-right-style:solid}html :where([style^=border-bottom-width],[style*=";border-bottom-width"],[style*="; border-bottom-width"]){border-bottom-style:solid}html :where([style^=border-left-width],[style*=";border-left-width"],[style*="; border-left-width"]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+
+/*# sourceURL=/wp-includes/css/dist/block-library/common.min.css */
+</style>
+<style id="classic-theme-styles-inline-css">
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}.wp-block-button{--wp--preset--dimension--25: 25%;--wp--preset--dimension--50: 50%;--wp--preset--dimension--75: 75%;--wp--preset--dimension--100: 100%;}:where(body) { margin: 0; }:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<link rel='stylesheet' id='turnkey-cypress-css' href='./wp-content/themes/turnkey-canopy/style.css?ver=3.0.0' media='all' />
+
+
+</head>
+<body class="home blog wp-theme-turnkey-canopy">
+<!-- ================= TOP UTILITY BAR ================= -->
+<!-- ================= TOP UTILITY BAR ================= -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <span class="topbar-hours">Mon &ndash; Sat 8:00AM &ndash; 5:00PM &middot; Sun 8:00AM &ndash; 4:00PM</span>
+    <span class="topbar-right">
+      <a class="topbar-phone" href="tel:+15045652705"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.2.4 2.5.6 3.8.6a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.6 21 3 13.4 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.3.2 2.6.6 3.8a1 1 0 0 1-.25 1L6.6 10.8Z"./></svg>(504) 565-2705</a>
+    </span>
+  </div>
+</div>
+
+<!-- ================= HEADER ================= -->
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="./" aria-label="TurnKey Tree Removal — home">
+      <img class="logo-img" src="./wp-content/themes/turnkey-canopy/assets/logo.png" alt="TurnKey Tree Removal">
+    </a>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="./">Home</a>
+
+      <span class="nav-drop">
+        <a class="nav-drop-top" href="./#services">Tree Services <svg class="nav-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M6 9l6 6 6-6"./></svg></a>
+        <ul class="nav-menu">
+                      <li><a href="./tree-removal/">Tree Removal</a></li>
+                      <li><a href="./tree-trimming/">Tree Trimming</a></li>
+                      <li><a href="./stump-grinding/">Stump Grinding &amp; Removal</a></li>
+                      <li><a href="./tree-preservation/">Tree Preservation</a></li>
+                      <li><a href="./fertilization/">Fertilization</a></li>
+                      <li><a href="./planting/">Planting &amp; Planning</a></li>
+                      <li><a href="./support-systems/">Support Systems</a></li>
+                      <li><a href="./disease-pest-control/">Disease &amp; Pest Control</a></li>
+                      <li><a href="./termite-treatments/">Termite Treatments</a></li>
+                      <li><a href="./species-planning/">Species &amp; Site Planning</a></li>
+                  </ul>
+      </span>
+
+      <span class="nav-drop">
+        <a class="nav-drop-top" href="./#areas">Service Areas <svg class="nav-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M6 9l6 6 6-6"./></svg></a>
+        <ul class="nav-menu nav-menu--cols">
+                      <li><a href="./baton-rouge/">Baton Rouge</a></li>
+                      <li><a href="./covington/">Covington</a></li>
+                      <li><a href="./gretna/">Gretna</a></li>
+                      <li><a href="./hammond/">Hammond</a></li>
+                      <li><a href="./harahan/">Harahan</a></li>
+                      <li><a href="./kenner/">Kenner</a></li>
+                      <li><a href="./laplace/">Laplace</a></li>
+                      <li><a href="./madisonville/">Madisonville</a></li>
+                      <li><a href="./mandeville/">Mandeville</a></li>
+                      <li><a href="./metairie/">Metairie</a></li>
+                      <li><a href="./river-ridge/">River Ridge</a></li>
+                      <li><a href="./slidell/">Slidell</a></li>
+                      <li><a href="./st-rose/">St. Rose</a></li>
+                  </ul>
+      </span>
+
+      <a href="./#reviews">Testimonials</a>
+      <a href="./contact/">Contact</a>
+      <a href="./blog/">Blog</a>
+    </nav>
+    <div class="header-actions">
+      <a class="btn-freeest" href="./#hero-form" onclick="if(window.openLcModal){openLcModal();return false;}">FREE Estimates</a>
+      <a class="header-cta" href="tel:+15045652705">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.2.4 2.5.6 3.8.6a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.6 21 3 13.4 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.3.2 2.6.6 3.8a1 1 0 0 1-.25 1L6.6 10.8Z"./></svg>
+        <span>(504) 565-2705</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="hero-bg" style="background-image:url('./wp-content/themes/turnkey-canopy/assets/hero-poster.jpg')" aria-hidden="true">
+      <video autoplay muted loop playsinline>
+        <source src="./wp-content/themes/turnkey-canopy/assets/hero-bg.mp4" type="video/mp4">
+      </video>
+      <div class="hero-scrim"></div>
+    </div>
+    <div class="wrap hero-inner hero-grid2">
+      <div class="hero-copy">
+        <span class="eyebrow">Certified Arborists &middot; Licensed &amp; Insured</span>
+        <h1>Your Reliable Source<br>for Safe &amp; Efficient<br><span class="mark">Tree Services</span> in<br>New Orleans</h1>
+        <ul class="hero-points">
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4 10-10"./></svg>Request Your FREE Quote Today &mdash; Competitive Prices for Tree Removal &amp; More</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4 10-10"./></svg>Dependable &amp; Experienced Tree Professionals You Can Trust</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4 10-10"./></svg>Assured Quality: Licensed, Insured, and Best Price Guarantee</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 12 4 4 10-10"./></svg>Quality workmanship and customer service.</li>
+        </ul>
+        <div class="hero-ctas">
+          <a class="btn btn-amber" href="tel:+15045652705">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.2.4 2.5.6 3.8.6a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.6 21 3 13.4 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.3.2 2.6.6 3.8a1 1 0 0 1-.25 1L6.6 10.8Z"./></svg>
+            Call (504) 565-2705
+          </a>
+          <a class="btn btn-estimate" href="#hero-form">Get a Free Estimate</a>
+        </div>
+      </div>
+      <div class="hero-form-wrap">
+        <div class="hero-form" id="hero-form">
+          <div class="hf-head">Request a Free Estimate</div>
+          <div class="lc-scroll">
+            <iframe class="lc-embed" src="https://api.leadconnectorhq.com/widget/form/sT0W0VnG9230Y21gogvb?notrack=true" title="Request a Free Estimate" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TRUST STRIP ================= -->
+  <section class="trust" aria-label="Why homeowners trust us">
+    <div class="wrap trust-inner">
+      <div class="trust-item">
+        <span class="ic" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2 4 5.5V11c0 5 3.4 9.4 8 10.5 4.6-1.1 8-5.5 8-10.5V5.5L12 2Z"./><path d="m8.5 12 2.5 2.5 4.5-4.5"./></svg></span>
+        <div><strong>Licensed &amp; Insured</strong><small>Full liability coverage</small></div>
+      </div>
+      <div class="trust-item">
+        <span class="ic" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="9" r="6"./><path d="m9 14-2 8 5-3 5 3-2-8"./></svg></span>
+        <div><strong>Certified Arborists</strong><small>Trained tree-care experts</small></div>
+      </div>
+      <div class="trust-item">
+        <span class="ic" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.2 1.1 6L12 16.8 6.6 19.6l1.1-6L3.2 9.4l6.1-.8L12 3Z"./></svg></span>
+        <div><strong>5-Star Rated</strong><small>On Google &amp; Facebook</small></div>
+      </div>
+      <div class="trust-item">
+        <span class="ic" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"./><path d="M14.8 8.8c-.5-.9-1.6-1.4-2.8-1.4-1.7 0-3 .9-3 2.2 0 2.8 6 1.6 6 4.4 0 1.3-1.3 2.2-3 2.2-1.4 0-2.6-.6-3-1.6M12 5.6v1.8M12 16.2V18"./></svg></span>
+        <div><strong>Best Price Guarantee</strong><small>Free consultations &amp; estimates</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SERVICES ================= -->
+  <section class="section" id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">What We Do</span>
+        <h2>Complete Tree Care, <span class="mark">Rooted in Craft</span></h2>
+        <p>One crew for everything your trees need — from safe removals over rooflines to long-term preservation plans for the oaks your street is named after.</p>
+      </div>
+      <div class="svc-grid">
+        <article class="svc-card">
+          <div class="svc-media"><img src="./wp-content/themes/turnkey-canopy/assets/svc1.jpg" alt="Certified arborist roped in high on a trunk during a tree removal" loading="lazy"></div>
+          <div class="svc-body">
+            <h3>Tree Removal</h3>
+            <p>Safe, controlled removals &mdash; even large trees leaning over homes, fences, and power lines &mdash; with rigging, not guesswork.</p>
+            <a class="svc-link" href="#hero-form">Learn More <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"./></svg></a>
+          </div>
+        </article>
+        <article class="svc-card">
+          <div class="svc-media"><img src="./wp-content/themes/turnkey-canopy/assets/svc2.jpg" alt="Tree crew pruning limbs with a chainsaw" loading="lazy"></div>
+          <div class="svc-body">
+            <h3>Tree Trimming</h3>
+            <p>Structural pruning that keeps trees healthy, storm-ready, and clear of your roof &mdash; never topping, never over-cutting.</p>
+            <a class="svc-link" href="#hero-form">Learn More <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"./></svg></a>
+          </div>
+        </article>
+        <article class="svc-card">
+          <div class="svc-media"><img src="./wp-content/themes/turnkey-canopy/assets/svc3.jpg" alt="Freshly cut tree stump ready for grinding" loading="lazy"></div>
+          <div class="svc-body">
+            <h3>Stump Grinding &amp; Removal</h3>
+            <p>We grind stumps below grade, haul the debris, and leave the spot ready for sod, garden beds, or new planting.</p>
+            <a class="svc-link" href="#hero-form">Learn More <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"./></svg></a>
+          </div>
+        </article>
+        <article class="svc-card">
+          <div class="svc-media"><img src="./wp-content/themes/turnkey-canopy/assets/svc4.jpg" alt="Mature spreading oak preserved on an open lawn" loading="lazy"></div>
+          <div class="svc-body">
+            <h3>Tree Preservation</h3>
+            <p>Root-zone care, soil work, and careful pruning plans that protect mature live oaks and heritage trees for decades.</p>
+            <a class="svc-link" href="#hero-form">Learn More <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"./></svg></a>
+          </div>
+        </article>
+        <article class="svc-card">
+          <div class="svc-media"><img src="./wp-content/themes/turnkey-canopy/assets/svc5.jpg" alt="Hands planting a young tree in rich soil" loading="lazy"></div>
+          <div class="svc-body">
+            <h3>Fertilization</h3>
+            <p>Deep-root feeding matched to our Gulf South soils, so stressed trees recover and healthy ones keep thriving.</p>
+            <a class="svc-link" href="#hero-form">Learn More <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"./></svg></a>
+          </div>
+        </article>
+        <article class="svc-card">
+          <div class="svc-media"><img src="./wp-content/themes/turnkey-canopy/assets/svc6.jpg" alt="Close-up of healthy tree bark" loading="lazy"></div>
+          <div class="svc-body">
+            <h3>Disease &amp; Pest Control</h3>
+            <p>Early diagnosis and targeted treatment for borers, scale, fungal disease, and the other threats our humidity invites.</p>
+            <a class="svc-link" href="#hero-form">Learn More <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"./></svg></a>
+          </div>
+        </article>
+      </div>
+      <div class="svc-all">
+        <a class="btn btn-cypress svc-allbtn" href="#hero-form">See All Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= HOW IT WORKS (green) ================= -->
+  <section class="section band" id="process">
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="eyebrow">How It Works</span>
+        <h2>Three Steps. No Surprises.</h2>
+      </div>
+      <div class="steps steps-green">
+        <div class="step">
+          <span class="num" aria-hidden="true">1</span>
+          <h3>Free Consultation</h3>
+          <p>A certified arborist walks your property, explains exactly what your trees need, and gives you a clear written estimate — free.</p>
+        </div>
+        <div class="step">
+          <span class="num" aria-hidden="true">2</span>
+          <h3>Expert Work</h3>
+          <p>Our crew shows up on time with the right equipment and does the job safely, whether it is a delicate prune or a full removal.</p>
+        </div>
+        <div class="step">
+          <span class="num" aria-hidden="true">3</span>
+          <h3>Complete Cleanup</h3>
+          <p>Every limb, chip, and leaf hauled away. We leave your yard cleaner than we found it — that is the TurnKey in our name.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TESTIMONIALS ================= -->
+  <section class="section" id="reviews" style="background:rgba(255,255,255,.5);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="eyebrow">Word Around Town</span>
+        <h2>What Your Neighbors Say</h2>
+      </div>
+      <div class="rev-carousel">
+        <button class="rev-arrow rev-prev" type="button" aria-label="Previous reviews"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"./></svg></button>
+        <div class="rev-track" id="revTrack">
+          <article class="quote rev-slide">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>“This company helped us with planting new trees at our new office location. Their team was knowledgeable about which species would thrive in our climate and soil conditions. Our office now looks inviting, and our clients love the new look!”</blockquote>
+            <div class="who"><strong>Susan Williams</strong><small>Tree Planting</small></div>
+          </article>
+          <article class="quote rev-slide">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>“As a homeowner with a large, landscaped yard, I’ve struggled to maintain the health of my trees. TurnKey Tree Removal’s fertilization service has been a game changer. The professional team assessed my yard and delivered a customized treatment that rejuvenated my oaks and maples. I’m grateful for their expertise and the visible improvement in my trees.”</blockquote>
+            <div class="who"><strong>Frederick McVay</strong><small>Fertilization</small></div>
+          </article>
+          <article class="quote rev-slide">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>“Our campus has several heritage trees that need professional care to ensure their preservation. Their team provided exceptional service by implementing preservation strategies that have helped protect our trees from environmental stress and diseases. I recommend using them.”</blockquote>
+            <div class="who"><strong>Matthew Davis</strong><small>Tree Preservation</small></div>
+          </article>
+          <article class="quote rev-slide">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>“After a storm, a massive tree threatened our restaurant’s structure. Their team responded quickly to our emergency call for tree removal. They handled the situation with utmost professionalism and safety, preventing any damage to our property. Give them a call!”</blockquote>
+            <div class="who"><strong>Lola Young</strong><small>Tree Removal</small></div>
+          </article>
+          <article class="quote rev-slide">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>“For our new building project, we needed a clear site. Their complete stump removal service was perfect, enabling us to start on a clean slate without any delays. I highly recommend them.”</blockquote>
+            <div class="who"><strong>Tom Briner</strong><small>Stump Removal</small></div>
+          </article>
+          <article class="quote rev-slide">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>“Their stump grinding service was efficient and tidy. After removing a diseased tree from my backyard, they ground the stump below ground level, which allowed me to replant the area immediately. Their clean-up was impeccable, leaving no trace behind. I will use them again.”</blockquote>
+            <div class="who"><strong>Silvanna Gipson</strong><small>Stump Grinding</small></div>
+          </article>
+          <article class="quote rev-slide">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>“I wanted a garden that looked good throughout the seasons and reached out to TurnKey Tree Removal for help. Their planting planning service was thorough, considering sun exposure, soil type, and my personal preferences. Thank you guys!”</blockquote>
+            <div class="who"><strong>Justin Whitehill</strong><small>Planting Planning</small></div>
+          </article>
+          <article class="quote rev-slide">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>“Our cherished old oak was showing signs of age. TurnKey Tree Removal installed a support system that stabilized the tree, extending its life and maintaining its natural beauty.”</blockquote>
+            <div class="who"><strong>Rachel Gray</strong><small>Support Systems</small></div>
+          </article>
+        </div>
+        <button class="rev-arrow rev-next" type="button" aria-label="Next reviews"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"./></svg></button>
+      </div>
+      <div class="rev-dots" id="revDots"></div>
+    </div>
+  </section>
+
+  <!-- ================= GALLERY ================= -->
+  <section class="section" id="gallery">
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="eyebrow">Our Work</span>
+        <h2>Recent Jobs Around New Orleans</h2>
+        <p>From storm cleanups to heritage-oak care &mdash; a look at the trees we&rsquo;ve worked on across the metro.</p>
+      </div>
+      <div class="gallery-grid">
+        <figure class="gal-item"><img src="./wp-content/themes/turnkey-canopy/assets/gal1.jpg" alt="Arborist sectioning a large trunk with a chainsaw" loading="lazy"></figure>
+        <figure class="gal-item"><img src="./wp-content/themes/turnkey-canopy/assets/gal2.jpg" alt="Bucket truck reaching into roadside trees near power lines" loading="lazy"></figure>
+        <figure class="gal-item"><img src="./wp-content/themes/turnkey-canopy/assets/gal3.jpg" alt="Cut branches staged for chipping" loading="lazy"></figure>
+        <figure class="gal-item"><img src="./wp-content/themes/turnkey-canopy/assets/gal4.jpg" alt="Storm-toppled tree beside a home" loading="lazy"></figure>
+        <figure class="gal-item"><img src="./wp-content/themes/turnkey-canopy/assets/gal5.jpg" alt="Avenue of moss-draped live oaks in Southeast Louisiana" loading="lazy"></figure>
+        <figure class="gal-item"><img src="./wp-content/themes/turnkey-canopy/assets/gal6.jpg" alt="TurnKey crew sectioning a felled tree" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SERVICE AREAS ================= -->
+  <section class="section areas" id="areas">
+    <div class="wrap areas-grid">
+      <div class="areas-intro">
+        <span class="eyebrow">Where We Work</span>
+        <h2>Proudly Serving Southeast Louisiana</h2>
+        <p>Based in New Orleans, with crews on both shores of Lake Pontchartrain and out to Baton Rouge &mdash; <strong>13 communities</strong> and counting.</p>
+        <a class="btn btn-amber" href="tel:+15045652705">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.2.4 2.5.6 3.8.6a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.6 21 3 13.4 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.3.2 2.6.6 3.8a1 1 0 0 1-.25 1L6.6 10.8Z"./></svg>
+          Call (504) 565-2705
+        </a>
+        <p class="areas-note">Not on the list? Call us anyway &mdash; we may still be able to help.</p>
+      </div>
+      <ul class="area-pins">
+        <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"./><circle cx="12" cy="10" r="2.5"./></svg>Baton Rouge</li>
+        <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"./><circle cx="12" cy="10" r="2.5"./></svg>Covington</li>
+        <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"./><circle cx="12" cy="10" r="2.5"./></svg>Gretna</li>
+        <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"./><circle cx="12" cy="10" r="2.5"./></svg>Hammond</li>
+        <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"./><circle cx="12" cy="10" r="2.5"./></svg>Harahan</li>
+        <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"./><circle cx="12" cy="10" r="2.5"./></svg>Kenner</li>
+        <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"./><circle cx="12" cy="10" r="2.5"./></svg>Laplace</li>
+        <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"./><circle cx="12" cy="10" r="2.5"./></svg>Madisonville</li>
+        <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"./><circle cx="12" cy="10" r="2.5"./></svg>Mandeville</li>
+        <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"./><circle cx="12" cy="10" r="2.5"./></svg>Metairie</li>
+        <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"./><circle cx="12" cy="10" r="2.5"./></svg>River Ridge</li>
+        <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"./><circle cx="12" cy="10" r="2.5"./></svg>Slidell</li>
+        <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"./><circle cx="12" cy="10" r="2.5"./></svg>St. Rose</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= FINAL CTA ================= -->
+  <section class="final final-full">
+    <div class="final-card">
+      <div class="final-bg" aria-hidden="true"><video autoplay muted loop playsinline poster="./wp-content/themes/turnkey-canopy/assets/cta-bg.jpg"><source src="./wp-content/themes/turnkey-canopy/assets/hero-bg.mp4" type="video/mp4"></video></div>
+      <div class="wrap">
+        <div class="final-inner">
+          <span class="eyebrow">Free Consultations &amp; Estimates</span>
+          <h2>Ready When Your Trees Are</h2>
+          <p>Talk to a certified arborist today. No pressure, no obligation — just straight answers about what your trees need and what it will cost.</p>
+          <div class="final-ctas">
+            <a class="btn btn-amber" href="tel:+15045652705">Call Now</a>
+            <a class="btn btn-estimate" href="#hero-form">Request a Free Estimate</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="section" id="faq">
+    <div class="wrap faq-wrap">
+      <div class="section-head center">
+        <span class="eyebrow">Good to Know</span>
+        <h2>Frequently Asked Questions</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Do I need a permit for tree removal?<span class="faq-ic" aria-hidden="true"></span></summary>
+          <div class="faq-a"><p>Permit requirements can vary depending on the size and location of the tree. We can help you navigate the permitting process in New Orleans.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>How do I know if my tree needs to be removed?<span class="faq-ic" aria-hidden="true"></span></summary>
+          <div class="faq-a"><p>There are several signs that might indicate that your tree needs removal. These include dead or dying branches, signs of disease like discoloration or oozing sap, structural damage to the trunk or roots, severe storm damage, or interference with structures or power lines. If you’re unsure, our certified arborists can assess the tree and recommend the best course of action.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Do you offer any services besides tree removal?<span class="faq-ic" aria-hidden="true"></span></summary>
+          <div class="faq-a"><p>Absolutely! We’re your one-stop shop for all your tree care needs. We offer services like trimming, planting, fertilization, disease and pest control, and tree support systems.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>How much does tree removal cost?<span class="faq-ic" aria-hidden="true"></span></summary>
+          <div class="faq-a"><p>The cost of removal depends on several factors like the size, location, and condition of the tree. We offer free consultations to assess your specific situation and provide a transparent quote.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>What are my options for stump grinding?<span class="faq-ic" aria-hidden="true"></span></summary>
+          <div class="faq-a"><p>We offer different methods to suit your needs, including high-powered grinding machines for most removals and low-profile grinders for tight spaces.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>How can I schedule a consultation with TurnKey Tree Removal?<span class="faq-ic" aria-hidden="true"></span></summary>
+          <div class="faq-a"><p>Contact us by phone, or through our website to schedule a free consultation with one of our certified arborists. We’ll be happy to discuss your tree care needs and answer any questions you may have.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="footer-logo"><img src="./wp-content/themes/turnkey-canopy/assets/logo.png" alt="TurnKey Tree Removal"></span>
+        <p>Safe, efficient tree services for New Orleans and Southeast Louisiana. Licensed and insured, with certified arborists on staff and a best price guarantee.</p>
+        <ul class="footer-contact">
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.2.4 2.5.6 3.8.6a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.6 21 3 13.4 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.3.2 2.6.6 3.8a1 1 0 0 1-.25 1L6.6 10.8Z"./></svg><a class="footer-phone" href="tel:+15045652705">(504) 565-2705</a></li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"./><circle cx="12" cy="10" r="2.5"./></svg><span>Serving Greater New Orleans &amp; Southeast Louisiana</span></li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"./><path d="M12 7v5l3 2"./></svg><span>Mon&ndash;Sat 8:00am&ndash;5:00pm &middot; Sun 8:00am&ndash;4:00pm</span></li>
+        </ul>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 9h3V6h-3c-2 0-3.5 1.5-3.5 3.5V11H8v3h2.5v7h3v-7H16l.5-3h-3V9.8c0-.5.4-.8 1-.8Z"./></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.94 8.5V19H4V8.5h2.94ZM5.47 4a1.7 1.7 0 1 1 0 3.4 1.7 1.7 0 0 1 0-3.4ZM20 19h-2.94v-5.6c0-1.34-.48-2.25-1.68-2.25-.92 0-1.46.62-1.7 1.22-.09.21-.11.5-.11.8V19h-2.94s.04-9.02 0-9.95h2.94v1.41c.39-.6 1.09-1.46 2.65-1.46 1.94 0 3.39 1.27 3.39 3.99V19Z"./></svg></a>
+          <a href="#" aria-label="X"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.53 4h2.6l-5.68 6.49L21 20h-5.23l-4.1-5.36L6.98 20H4.38l6.07-6.94L4 4h5.36l3.7 4.9L17.53 4Zm-.91 14.4h1.44L8.46 5.5H6.9l9.72 12.9Z"./></svg></a>
+          <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4.5" y="4.5" width="15" height="15" rx="4.6"./><circle cx="12" cy="12" r="3.6"./><circle cx="16.6" cy="7.4" r="1" fill="currentColor" stroke="none"./></svg></a>
+          <a href="#" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 7.2c-.11-.86-.56-1.5-1.44-1.6C18.2 5.3 12 5.3 12 5.3s-6.2 0-8.16.3c-.88.1-1.33.74-1.44 1.6C2.1 9.15 2.1 12 2.1 12s0 2.85.3 4.8c.11.86.56 1.5 1.44 1.6 1.96.3 8.16.3 8.16.3s6.2 0 8.16-.3c.88-.1 1.33-.74 1.44-1.6.3-1.95.3-4.8.3-4.8s0-2.85-.3-4.8ZM10.1 14.9V9.1l5 2.9-5 2.9Z"./></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Our Services</h4>
+        <ul class="footer-two">
+          <li><a href="#services">Tree Removal</a></li>
+          <li><a href="#services">Tree Trimming</a></li>
+          <li><a href="#services">Stump Grinding &amp; Removal</a></li>
+          <li><a href="#services">Tree Preservation</a></li>
+          <li><a href="#services">Fertilization</a></li>
+          <li><a href="#services">Planting &amp; Planning</a></li>
+          <li><a href="#services">Support Systems</a></li>
+          <li><a href="#services">Disease &amp; Pest Control</a></li>
+          <li><a href="#services">Termite Treatments</a></li>
+          <li><a href="#services">Species &amp; Site Planning</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Service Areas</h4>
+        <ul class="footer-two">
+          <li><a href="#areas">Baton Rouge</a></li>
+          <li><a href="#areas">Covington</a></li>
+          <li><a href="#areas">Gretna</a></li>
+          <li><a href="#areas">Hammond</a></li>
+          <li><a href="#areas">Harahan</a></li>
+          <li><a href="#areas">Kenner</a></li>
+          <li><a href="#areas">Laplace</a></li>
+          <li><a href="#areas">Madisonville</a></li>
+          <li><a href="#areas">Mandeville</a></li>
+          <li><a href="#areas">Metairie</a></li>
+          <li><a href="#areas">River Ridge</a></li>
+          <li><a href="#areas">Slidell</a></li>
+          <li><a href="#areas">St. Rose</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 TurnKey Tree Removal · New Orleans, LA</span>
+      <span>Licensed &amp; Insured · 5-Star Rated on Google &amp; Facebook</span>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>
