@@ -161,7 +161,7 @@
     <a class="logo" href="../" aria-label="TurnKey Tree Removal — home">
       <img class="logo-img" src="../wp-content/themes/turnkey-canopy/assets/logo.png" alt="TurnKey Tree Removal">
     </a>
-    <nav class="main-nav" aria-label="Primary">
+    <nav class="main-nav" id="primaryNav" aria-label="Primary">
       <a href="../">Home</a>
       <a href="../about/">About</a>
 
@@ -210,9 +210,34 @@
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.2.4 2.5.6 3.8.6a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.6 21 3 13.4 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.3.2 2.6.6 3.8a1 1 0 0 1-.25 1L6.6 10.8Z"../></svg>
         <span>(504) 565-2705</span>
       </a>
+      <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primaryNav">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
     </div>
   </div>
 </header>
+<script>
+(function () {
+  var btn = document.querySelector('.nav-toggle');
+  var nav = document.getElementById('primaryNav');
+  if (!btn || !nav) return;
+  function setOpen(open) {
+    nav.classList.toggle('is-open', open);
+    btn.classList.toggle('is-active', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+  }
+  btn.addEventListener('click', function (e) { e.stopPropagation(); setOpen(!nav.classList.contains('is-open')); });
+  nav.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+  document.addEventListener('click', function (e) {
+    if (nav.classList.contains('is-open') && !nav.contains(e.target) && !btn.contains(e.target)) setOpen(false);
+  });
+  window.addEventListener('resize', function () { if (window.innerWidth > 1080) setOpen(false); });
+})();
+</script>
 
 <main id="top">
 
@@ -414,6 +439,80 @@
     </div>
   </div>
 </div>
+<script>
+function openLcModal(){var m=document.getElementById('lcModal');m.classList.add('open');m.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}
+function closeLcModal(){var m=document.getElementById('lcModal');m.classList.remove('open');m.setAttribute('aria-hidden','true');document.body.style.overflow='';}
+document.getElementById('lcModal').addEventListener('click',function(e){if(e.target===this)closeLcModal();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLcModal();});
+</script>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="footer-logo"><img src="../wp-content/themes/turnkey-canopy/assets/logo.png" alt="TurnKey Tree Removal"></span>
+        <p>Safe, efficient tree services for New Orleans and Southeast Louisiana. Licensed and insured, with certified arborists on staff and a best price guarantee.</p>
+        <ul class="footer-contact">
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.2.4 2.5.6 3.8.6a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.6 21 3 13.4 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.3.2 2.6.6 3.8a1 1 0 0 1-.25 1L6.6 10.8Z"../></svg><a class="footer-phone" href="tel:+15045652705">(504) 565-2705</a></li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"../><circle cx="12" cy="10" r="2.5"../></svg><span>Serving Greater New Orleans &amp; Southeast Louisiana</span></li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"../><path d="M12 7v5l3 2"../></svg><span>Mon&ndash;Sat 8:00am&ndash;5:00pm &middot; Sun 8:00am&ndash;4:00pm</span></li>
+        </ul>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 9h3V6h-3c-2 0-3.5 1.5-3.5 3.5V11H8v3h2.5v7h3v-7H16l.5-3h-3V9.8c0-.5.4-.8 1-.8Z"../></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.94 8.5V19H4V8.5h2.94ZM5.47 4a1.7 1.7 0 1 1 0 3.4 1.7 1.7 0 0 1 0-3.4ZM20 19h-2.94v-5.6c0-1.34-.48-2.25-1.68-2.25-.92 0-1.46.62-1.7 1.22-.09.21-.11.5-.11.8V19h-2.94s.04-9.02 0-9.95h2.94v1.41c.39-.6 1.09-1.46 2.65-1.46 1.94 0 3.39 1.27 3.39 3.99V19Z"../></svg></a>
+          <a href="#" aria-label="X"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.53 4h2.6l-5.68 6.49L21 20h-5.23l-4.1-5.36L6.98 20H4.38l6.07-6.94L4 4h5.36l3.7 4.9L17.53 4Zm-.91 14.4h1.44L8.46 5.5H6.9l9.72 12.9Z"../></svg></a>
+          <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4.5" y="4.5" width="15" height="15" rx="4.6"../><circle cx="12" cy="12" r="3.6"../><circle cx="16.6" cy="7.4" r="1" fill="currentColor" stroke="none"../></svg></a>
+          <a href="#" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 7.2c-.11-.86-.56-1.5-1.44-1.6C18.2 5.3 12 5.3 12 5.3s-6.2 0-8.16.3c-.88.1-1.33.74-1.44 1.6C2.1 9.15 2.1 12 2.1 12s0 2.85.3 4.8c.11.86.56 1.5 1.44 1.6 1.96.3 8.16.3 8.16.3s6.2 0 8.16-.3c.88-.1 1.33-.74 1.44-1.6.3-1.95.3-4.8.3-4.8s0-2.85-.3-4.8ZM10.1 14.9V9.1l5 2.9-5 2.9Z"../></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Our Services</h4>
+        <ul class="footer-two">
+          <li><a href="#">Tree Removal</a></li>
+          <li><a href="#">Tree Trimming</a></li>
+          <li><a href="#">Stump Grinding &amp; Removal</a></li>
+          <li><a href="#">Tree Preservation</a></li>
+          <li><a href="#">Fertilization</a></li>
+          <li><a href="#">Planting &amp; Planning</a></li>
+          <li><a href="#">Support Systems</a></li>
+          <li><a href="#">Disease &amp; Pest Control</a></li>
+          <li><a href="#">Termite Treatments</a></li>
+          <li><a href="#">Species &amp; Site Planning</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Service Areas</h4>
+        <ul class="footer-two">
+          <li><a href="#">Baton Rouge</a></li>
+          <li><a href="#">Covington</a></li>
+          <li><a href="#">Gretna</a></li>
+          <li><a href="#">Hammond</a></li>
+          <li><a href="#">Harahan</a></li>
+          <li><a href="#">Kenner</a></li>
+          <li><a href="#">Laplace</a></li>
+          <li><a href="#">Madisonville</a></li>
+          <li><a href="#">Mandeville</a></li>
+          <li><a href="#" aria-current="page">Metairie</a></li>
+          <li><a href="#">River Ridge</a></li>
+          <li><a href="#">Slidell</a></li>
+          <li><a href="#">St. Rose</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 TurnKey Tree Removal · New Orleans, LA</span>
+      <span>Licensed &amp; Insured · 5-Star Rated on Google &amp; Facebook</span>
+    </div>
+  </div>
+</footer>
+
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"../*"},{"not":{"href_matches":["../wp-*.php","../wp-admin/*","../wp-content/uploads/*","../wp-content/*","../wp-content/plugins/*","../wp-content/themes/turnkey-canopy/*","../*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"../wp-includes/js/wp-emoji-release.min.js?ver=7.1"}}
+</script>
 
 <script id="tkr-review-rotate">
 (function(){

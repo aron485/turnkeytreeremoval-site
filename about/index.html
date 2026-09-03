@@ -68,7 +68,7 @@
     <a class="logo" href="../" aria-label="TurnKey Tree Removal — home">
       <img class="logo-img" src="../wp-content/themes/turnkey-canopy/assets/logo.png" alt="TurnKey Tree Removal">
     </a>
-    <nav class="main-nav" aria-label="Primary">
+    <nav class="main-nav" id="primaryNav" aria-label="Primary">
       <a href="../">Home</a>
       <a href="../about/" aria-current="page">About</a>
 
@@ -117,9 +117,34 @@
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.2.4 2.5.6 3.8.6a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.6 21 3 13.4 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.3.2 2.6.6 3.8a1 1 0 0 1-.25 1L6.6 10.8Z"../></svg>
         <span>(504) 565-2705</span>
       </a>
+      <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primaryNav">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
     </div>
   </div>
 </header>
+<script>
+(function () {
+  var btn = document.querySelector('.nav-toggle');
+  var nav = document.getElementById('primaryNav');
+  if (!btn || !nav) return;
+  function setOpen(open) {
+    nav.classList.toggle('is-open', open);
+    btn.classList.toggle('is-active', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+  }
+  btn.addEventListener('click', function (e) { e.stopPropagation(); setOpen(!nav.classList.contains('is-open')); });
+  nav.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+  document.addEventListener('click', function (e) {
+    if (nav.classList.contains('is-open') && !nav.contains(e.target) && !btn.contains(e.target)) setOpen(false);
+  });
+  window.addEventListener('resize', function () { if (window.innerWidth > 1080) setOpen(false); });
+})();
+</script>
 
 <main id="top">
 
@@ -308,6 +333,12 @@
   </div>
 </footer>
 
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"../*"},{"not":{"href_matches":["../wp-*.php","../wp-admin/*","../wp-content/uploads/*","../wp-content/*","../wp-content/plugins/*","../wp-content/themes/turnkey-canopy/*","../*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"../wp-includes/js/wp-emoji-release.min.js?ver=7.1"}}
+</script>
 
 <script id="tkr-review-rotate">
 (function(){
