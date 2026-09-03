@@ -51,9 +51,10 @@
     </a>
     <nav class="main-nav" aria-label="Primary">
       <a href="../">Home</a>
+      <a href="../about/">About</a>
 
       <span class="nav-drop">
-        <a class="nav-drop-top" href="../#services">Tree Services <svg class="nav-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M6 9l6 6 6-6"../></svg></a>
+        <a class="nav-drop-top" href="../tree-services/">Tree Services <svg class="nav-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M6 9l6 6 6-6"../></svg></a>
         <ul class="nav-menu">
                       <li><a href="../tree-removal/">Tree Removal</a></li>
                       <li><a href="../tree-trimming/">Tree Trimming</a></li>
@@ -69,7 +70,7 @@
       </span>
 
       <span class="nav-drop">
-        <a class="nav-drop-top" href="../#areas">Service Areas <svg class="nav-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M6 9l6 6 6-6"../></svg></a>
+        <a class="nav-drop-top" href="../service-areas/">Service Areas <svg class="nav-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M6 9l6 6 6-6"../></svg></a>
         <ul class="nav-menu nav-menu--cols">
                       <li><a href="../baton-rouge/">Baton Rouge</a></li>
                       <li><a href="../covington/">Covington</a></li>
@@ -100,6 +101,43 @@
     </div>
   </div>
 </header>
+<style>
+/* blog-post article + sticky sidebar layout (Cypress) */
+.post-layout{display:grid;grid-template-columns:minmax(0,1fr) 384px;gap:52px;padding:58px 0 84px;align-items:start;}
+.post-layout .post-body{max-width:none;}
+.sidebar{display:flex;flex-direction:column;gap:22px;position:sticky;top:92px;}
+.side-card{background:#fff;border:1px solid var(--line);border-top:4px solid var(--amber);border-radius:var(--r-lg);padding:26px 24px;box-shadow:var(--shadow-sm);}
+.side-card .eyebrow{margin-bottom:8px;}
+.side-card h3{font-size:1.22rem;color:var(--cypress);margin-bottom:6px;}
+.side-card>p{font-size:.9rem;color:var(--muted);margin-bottom:16px;}
+.side-card .btn{width:100%;}
+.side-note{font-size:.78rem;color:var(--muted);text-align:center;margin:12px 0 0;}
+.side-list{list-style:none;padding:0;margin:0;}
+.side-list li{border-bottom:1px solid var(--line);}
+.side-list li:last-child{border-bottom:none;}
+.side-list a{display:block;padding:11px 0 11px 22px;position:relative;color:var(--ink);text-decoration:none;font-size:.94rem;font-weight:600;transition:color .2s;}
+.side-list a::before{content:"";position:absolute;left:2px;top:16px;width:7px;height:7px;background:var(--line);transform:rotate(45deg);transition:background-color .2s;}
+.side-list a:hover{color:var(--amber-deep);}
+.side-list a:hover::before{background:var(--amber);}
+.side-list a[aria-current="page"]{color:var(--amber-deep);}
+.side-list a[aria-current="page"]::before{background:var(--amber);}
+.side-call{background:linear-gradient(135deg,var(--cypress) 0%,var(--cypress-deep) 100%);border-radius:var(--r-lg);padding:28px 24px;text-align:center;color:rgba(234,243,239,.85);}
+.side-call .eyebrow{color:var(--amber);margin-bottom:8px;}
+.side-call-phone{display:inline-block;font-size:1.5rem;font-weight:800;color:var(--amber);text-decoration:none;margin-bottom:8px;letter-spacing:-.01em;}
+.side-call-phone:hover{color:#fff;}
+.side-call p{font-size:.82rem;letter-spacing:.05em;margin:0;color:rgba(234,243,239,.72);}
+@media(max-width:960px){.post-layout{grid-template-columns:1fr;gap:44px;padding:48px 0 64px;}.sidebar{position:static;max-width:480px;}}
+/* estimate popup modal */
+.lc-modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(11,42,37,.72);}
+.lc-modal.open{display:flex;}
+.lc-modal-card{background:#fff;border-radius:16px;width:min(560px,100%);max-height:92vh;position:relative;box-shadow:0 40px 90px rgba(0,0,0,.4);border-top:5px solid var(--amber);display:flex;flex-direction:column;overflow:hidden;}
+.lc-modal-head{font-weight:800;font-size:1.12rem;color:var(--cypress);letter-spacing:.02em;text-transform:uppercase;padding:20px 24px 14px;}
+.lc-modal-close{position:absolute;top:10px;right:12px;width:34px;height:34px;border:none;background:rgba(18,63,57,.07);border-radius:50%;color:var(--cypress);font-size:1.4rem;line-height:1;cursor:pointer;transition:background-color .2s;}
+.lc-modal-close:hover{background:rgba(18,63,57,.15);}
+.lc-modal-body{flex:1;overflow-y:auto;}
+.lc-modal-body iframe{width:100%;height:70vh;border:0;display:block;background:#fff;}
+</style>
+
 <section class="page-hero">
   <div class="ph-bg" aria-hidden="true"><img src="../wp-content/themes/turnkey-canopy/assets/post-how-tree-removal-can-boost-your-homes-curb-appeal.jpg" alt=""></div>
   <div class="wrap page-hero-inner">
@@ -116,9 +154,12 @@
   </div>
 </section>
 
-<div class="wrap" style="padding:58px 0 76px;">
-  <article class="post-body">
-    <p>When it comes to boosting the curb appeal of your home, many people immediately think of landscaping, fresh paint, or perhaps upgrading the front door. But there’s one essential aspect of your property that often goes unnoticed: the trees.</p>
+<div class="wrap">
+  <div class="post-layout">
+
+    <div class="post-main">
+      <article class="post-body">
+        <p>When it comes to boosting the curb appeal of your home, many people immediately think of landscaping, fresh paint, or perhaps upgrading the front door. But there’s one essential aspect of your property that often goes unnoticed: the trees.</p>
 <p>While trees are vital for the environment and provide shade, they can sometimes become an eyesore, block natural light, or detract from your home’s aesthetic appeal. In such cases, tree removal might be the solution that transforms the look of your home.</p>
 <p>In this post, we’ll explore how tree removal can boost your home’s curb appeal and why <strong>TurnKey Tree Removal</strong> is the expert to call for this important task.</p>
 <h2>Improved Visibility and Enhanced Architectural Features</h2>
@@ -166,72 +207,77 @@
 <p>Whether you’re trying to improve your home’s aesthetic, make room for other landscaping features, or protect your property from tree-related damage, <strong>TurnKey Tree Removal</strong> is the go-to solution.</p>
 <p><strong>Contact us today</strong> to take your home’s curb appeal to the next level. Our team of professionals will guide you through the tree removal process and ensure your property looks stunning and safe.</p>
 <p>Visit our blog page for more tips on enhancing your home’s exterior and curb appeal with expert tree removal services from TurnKey Tree Removal!</p>
-  </article>
-  <div class="post-back">
-    <a class="btn btn-cypress" href="../blog/">&larr; Back to all articles</a>
-    <a class="btn btn-amber" href="tel:+15045652705">Call (504) 565-2705</a>
+      </article>
+      <div class="post-back">
+        <a class="btn btn-cypress" href="../blog/">&larr; Back to all articles</a>
+        <a class="btn btn-amber" href="tel:+15045652705">Call (504) 565-2705</a>
+      </div>
+    </div>
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar" aria-label="Estimate request and recent posts">
+      <div class="side-card side-cta">
+        <span class="eyebrow">Free Estimate</span>
+        <h3>Get a Straight Answer About Your Tree</h3>
+        <p>Tell us what&rsquo;s going on and a certified arborist will call you back with honest advice and a written estimate.</p>
+        <button class="btn btn-amber" type="button" onclick="openLcModal()">Get a Free Estimate</button>
+        <p class="side-note">No pressure, no obligation. <br>Free consultations &amp; estimates.</p>
+      </div>
+
+      <div class="side-card">
+        <span class="eyebrow">Recent Blog Posts</span>
+        <ul class="side-list">
+                        <li><a href="../how-tree-removal-can-boost-your-homes-curb-appeal/" aria-current="page">How Tree Removal Can Boost Your Home’s Curb Appeal</a></li>
+                            <li><a href="../10-ways-tree-preservation-can-enhance-property-value/">10 Ways Tree Preservation Can Enhance Property Value</a></li>
+                            <li><a href="../why-fertilization-is-essential-for-newly-planted-trees-and-shrubs/">Why Fertilization Is Essential for Newly Planted Trees and Shrubs</a></li>
+                            <li><a href="../top-benefits-of-mulching-for-tree-preservation/">Top Benefits of Mulching for Tree Preservation</a></li>
+                            <li><a href="../importance-of-proactive-termite-treatment-for-trees/">The Importance of Proactive Termite Treatment for Trees</a></li>
+                            <li><a href="../top-5-tree-species-for-urban-landscapes-in-new-orleans/">Top 5 Tree Species for Urban Landscapes in New Orleans</a></li>
+                      </ul>
+      </div>
+
+      <div class="side-call">
+        <span class="eyebrow">Talk to an Arborist</span>
+        <a class="side-call-phone" href="tel:+15045652705">(504) 565-2705</a>
+        <p>Mon &ndash; Sat 8am &ndash; 5pm &middot; Sun 8am &ndash; 4pm</p>
+      </div>
+    </aside>
+
   </div>
 </div>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <span class="footer-logo"><img src="../wp-content/themes/turnkey-canopy/assets/logo.png" alt="TurnKey Tree Removal"></span>
-        <p>Safe, efficient tree services for New Orleans and Southeast Louisiana. Licensed and insured, with certified arborists on staff and a best price guarantee.</p>
-        <ul class="footer-contact">
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.2.4 2.5.6 3.8.6a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.6 21 3 13.4 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.3.2 2.6.6 3.8a1 1 0 0 1-.25 1L6.6 10.8Z"../></svg><a class="footer-phone" href="tel:+15045652705">(504) 565-2705</a></li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"../><circle cx="12" cy="10" r="2.5"../></svg><span>Serving Greater New Orleans &amp; Southeast Louisiana</span></li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"../><path d="M12 7v5l3 2"../></svg><span>Mon&ndash;Sat 8:00am&ndash;5:00pm &middot; Sun 8:00am&ndash;4:00pm</span></li>
-        </ul>
-        <div class="footer-social">
-          <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 9h3V6h-3c-2 0-3.5 1.5-3.5 3.5V11H8v3h2.5v7h3v-7H16l.5-3h-3V9.8c0-.5.4-.8 1-.8Z"../></svg></a>
-          <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.94 8.5V19H4V8.5h2.94ZM5.47 4a1.7 1.7 0 1 1 0 3.4 1.7 1.7 0 0 1 0-3.4ZM20 19h-2.94v-5.6c0-1.34-.48-2.25-1.68-2.25-.92 0-1.46.62-1.7 1.22-.09.21-.11.5-.11.8V19h-2.94s.04-9.02 0-9.95h2.94v1.41c.39-.6 1.09-1.46 2.65-1.46 1.94 0 3.39 1.27 3.39 3.99V19Z"../></svg></a>
-          <a href="#" aria-label="X"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.53 4h2.6l-5.68 6.49L21 20h-5.23l-4.1-5.36L6.98 20H4.38l6.07-6.94L4 4h5.36l3.7 4.9L17.53 4Zm-.91 14.4h1.44L8.46 5.5H6.9l9.72 12.9Z"../></svg></a>
-          <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4.5" y="4.5" width="15" height="15" rx="4.6"../><circle cx="12" cy="12" r="3.6"../><circle cx="16.6" cy="7.4" r="1" fill="currentColor" stroke="none"../></svg></a>
-          <a href="#" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 7.2c-.11-.86-.56-1.5-1.44-1.6C18.2 5.3 12 5.3 12 5.3s-6.2 0-8.16.3c-.88.1-1.33.74-1.44 1.6C2.1 9.15 2.1 12 2.1 12s0 2.85.3 4.8c.11.86.56 1.5 1.44 1.6 1.96.3 8.16.3 8.16.3s6.2 0 8.16-.3c.88-.1 1.33-.74 1.44-1.6.3-1.95.3-4.8.3-4.8s0-2.85-.3-4.8ZM10.1 14.9V9.1l5 2.9-5 2.9Z"../></svg></a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h4>Our Services</h4>
-        <ul class="footer-two">
-          <li><a href="../tree-removal/">Tree Removal</a></li>
-          <li><a href="../tree-trimming/">Tree Trimming</a></li>
-          <li><a href="../stump-grinding/">Stump Grinding &amp; Removal</a></li>
-          <li><a href="../tree-preservation/">Tree Preservation</a></li>
-          <li><a href="../fertilization/">Fertilization</a></li>
-          <li><a href="../planting/">Planting &amp; Planning</a></li>
-          <li><a href="../support-systems/">Support Systems</a></li>
-          <li><a href="../disease-pest-control/">Disease &amp; Pest Control</a></li>
-          <li><a href="../termite-treatments/">Termite Treatments</a></li>
-          <li><a href="../species-planning/">Species &amp; Site Planning</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Service Areas</h4>
-        <ul class="footer-two">
-          <li><a href="../baton-rouge/">Baton Rouge</a></li>
-          <li><a href="../covington/">Covington</a></li>
-          <li><a href="../gretna/">Gretna</a></li>
-          <li><a href="../hammond/">Hammond</a></li>
-          <li><a href="../harahan/">Harahan</a></li>
-          <li><a href="../kenner/">Kenner</a></li>
-          <li><a href="../laplace/">Laplace</a></li>
-          <li><a href="../madisonville/">Madisonville</a></li>
-          <li><a href="../mandeville/">Mandeville</a></li>
-          <li><a href="../metairie/">Metairie</a></li>
-          <li><a href="../river-ridge/">River Ridge</a></li>
-          <li><a href="../slidell/">Slidell</a></li>
-          <li><a href="../st-rose/">St. Rose</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>&copy; 2026 TurnKey Tree Removal &middot; New Orleans, LA</span>
-      <span>Licensed &amp; Insured &middot; 5-Star Rated on Google &amp; Facebook</span>
+<!-- ================= ESTIMATE POPUP ================= -->
+<div class="lc-modal" id="lcModal" aria-hidden="true">
+  <div class="lc-modal-card" role="dialog" aria-modal="true" aria-label="Request a free estimate">
+    <button class="lc-modal-close" type="button" onclick="closeLcModal()" aria-label="Close">&times;</button>
+    <div class="lc-modal-head">Request a Free Estimate</div>
+    <div class="lc-modal-body">
+      <iframe src="https://api.leadconnectorhq.com/widget/form/FuhFXw2b7NiY3DkSLBjr?notrack=true" title="Request a Free Estimate" loading="lazy"></iframe>
     </div>
   </div>
-</footer>
+</div>
 
+<script id="tkr-review-rotate">
+(function(){
+  var q=document.getElementById('tkrReviewQuote'),w=document.getElementById('tkrReviewWho');
+  if(!q||!w)return;
+  var r=[
+    {q:'After a storm, a massive tree threatened our restaurant\u2019s structure. Their team responded quickly\u2026 handled the situation with utmost professionalism and safety, preventing any damage to our property.',n:'Lola Young'},
+    {q:'Their stump grinding service was efficient and tidy\u2026 they ground the stump below ground level, which allowed me to replant the area immediately. Their clean-up was impeccable, leaving no trace behind. I will use them again.',n:'Silvanna Gipson'},
+    {q:'Our cherished old oak was showing signs of age. TurnKey Tree Removal installed a support system that stabilized the tree, extending its life and maintaining its natural beauty.',n:'Rachel Gray'},
+    {q:'TurnKey Tree Removal\u2019s fertilization service has been a game changer\u2026 assessed my yard and delivered a customized treatment that rejuvenated my oaks and maples. I\u2019m grateful for their expertise.',n:'Frederick McVay'}
+  ];
+  var i=0;
+  setInterval(function(){
+    i=(i+1)%r.length;
+    q.style.opacity=0;w.style.opacity=0;
+    setTimeout(function(){
+      q.innerHTML='\u201c'+r[i].q+'\u201d';
+      w.innerHTML='\u2014 <b>'+r[i].n+'</b>';
+      q.style.opacity=1;w.style.opacity=1;
+    },400);
+  },4500);
+})();
+</script>
 </body>
 </html>

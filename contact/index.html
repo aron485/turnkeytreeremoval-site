@@ -103,9 +103,10 @@
     </a>
     <nav class="main-nav" aria-label="Primary">
       <a href="../">Home</a>
+      <a href="../about/">About</a>
 
       <span class="nav-drop">
-        <a class="nav-drop-top" href="../#services">Tree Services <svg class="nav-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M6 9l6 6 6-6"../></svg></a>
+        <a class="nav-drop-top" href="../tree-services/">Tree Services <svg class="nav-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M6 9l6 6 6-6"../></svg></a>
         <ul class="nav-menu">
                       <li><a href="../tree-removal/">Tree Removal</a></li>
                       <li><a href="../tree-trimming/">Tree Trimming</a></li>
@@ -121,7 +122,7 @@
       </span>
 
       <span class="nav-drop">
-        <a class="nav-drop-top" href="../#areas">Service Areas <svg class="nav-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M6 9l6 6 6-6"../></svg></a>
+        <a class="nav-drop-top" href="../service-areas/">Service Areas <svg class="nav-caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M6 9l6 6 6-6"../></svg></a>
         <ul class="nav-menu nav-menu--cols">
                       <li><a href="../baton-rouge/">Baton Rouge</a></li>
                       <li><a href="../covington/">Covington</a></li>
@@ -282,5 +283,27 @@
 </footer>
 
 
+<script id="tkr-review-rotate">
+(function(){
+  var q=document.getElementById('tkrReviewQuote'),w=document.getElementById('tkrReviewWho');
+  if(!q||!w)return;
+  var r=[
+    {q:'After a storm, a massive tree threatened our restaurant\u2019s structure. Their team responded quickly\u2026 handled the situation with utmost professionalism and safety, preventing any damage to our property.',n:'Lola Young'},
+    {q:'Their stump grinding service was efficient and tidy\u2026 they ground the stump below ground level, which allowed me to replant the area immediately. Their clean-up was impeccable, leaving no trace behind. I will use them again.',n:'Silvanna Gipson'},
+    {q:'Our cherished old oak was showing signs of age. TurnKey Tree Removal installed a support system that stabilized the tree, extending its life and maintaining its natural beauty.',n:'Rachel Gray'},
+    {q:'TurnKey Tree Removal\u2019s fertilization service has been a game changer\u2026 assessed my yard and delivered a customized treatment that rejuvenated my oaks and maples. I\u2019m grateful for their expertise.',n:'Frederick McVay'}
+  ];
+  var i=0;
+  setInterval(function(){
+    i=(i+1)%r.length;
+    q.style.opacity=0;w.style.opacity=0;
+    setTimeout(function(){
+      q.innerHTML='\u201c'+r[i].q+'\u201d';
+      w.innerHTML='\u2014 <b>'+r[i].n+'</b>';
+      q.style.opacity=1;w.style.opacity=1;
+    },400);
+  },4500);
+})();
+</script>
 </body>
 </html>
