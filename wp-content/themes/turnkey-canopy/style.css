@@ -722,3 +722,8 @@ h2,h3{font-weight:800;}
 @media (min-width:961px){
   #top .page-layout{grid-template-columns:minmax(0,1fr) 460px;}
 }
+
+/* ============ STICKY SIDEBAR GAP UNDER HEADER (Service/City) ============ */
+/* Sticky sidebar image was flush against the sticky header (top:92px == header height);
+   push it lower so a gap shows when scrolling. Beats the per-page inline `.sidebar{top:92px}`. */
+#top .sidebar{top:116px;}
