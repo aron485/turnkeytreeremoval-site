@@ -457,22 +457,6 @@
 
 </main>
 
-<!-- ================= ESTIMATE POPUP ================= -->
-<div class="lc-modal" id="lcModal" aria-hidden="true">
-  <div class="lc-modal-card" role="dialog" aria-modal="true" aria-label="Request a free estimate">
-    <button class="lc-modal-close" type="button" onclick="closeLcModal()" aria-label="Close">&times;</button>
-    <div class="lc-modal-head">Request a Free Estimate</div>
-    <div class="lc-modal-body">
-      <iframe class="lc-embed" src="https://api.leadconnectorhq.com/widget/form/FuhFXw2b7NiY3DkSLBjr?notrack=true" title="Request a Free Estimate" loading="lazy" style="width:100%;height:70vh;border:0;display:block;background:#fff;"></iframe>
-    </div>
-  </div>
-</div>
-<script>
-function openLcModal(){var m=document.getElementById('lcModal');m.classList.add('open');m.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}
-function closeLcModal(){var m=document.getElementById('lcModal');m.classList.remove('open');m.setAttribute('aria-hidden','true');document.body.style.overflow='';}
-document.getElementById('lcModal').addEventListener('click',function(e){if(e.target===this)closeLcModal();});
-document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLcModal();});
-</script>
 
 <!-- ================= FOOTER ================= -->
 <footer class="site-footer">
@@ -598,5 +582,30 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLcModal
 
 <!-- LeadConnector chat widget (matches live site) -->
 <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="66c5e2dca07303457322ec81"></script>
+
+<!-- ================= GLOBAL ESTIMATE POPUP (every CTA) ================= -->
+<div class="lc-modal" id="lcModal" aria-hidden="true">
+  <div class="lc-modal-card" role="dialog" aria-modal="true" aria-label="Request a free estimate">
+    <button class="lc-modal-close" type="button" onclick="closeLcModal()" aria-label="Close">&times;</button>
+    <div class="lc-modal-head">Request a Free Estimate</div>
+    <div class="lc-modal-body">
+      <iframe src="https://api.leadconnectorhq.com/widget/form/FuhFXw2b7NiY3DkSLBjr?notrack=true" title="Request a Free Estimate" loading="lazy" style="width:100%;height:70vh;border:0;display:block;background:#fff;"></iframe>
+    </div>
+  </div>
+</div>
+<script id="tkr-estimate-popup">
+function openLcModal(){var m=document.getElementById('lcModal');if(!m)return;m.classList.add('open');m.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}
+function closeLcModal(){var m=document.getElementById('lcModal');if(!m)return;m.classList.remove('open');m.setAttribute('aria-hidden','true');document.body.style.overflow='';}
+(function(){
+  var m=document.getElementById('lcModal');
+  if(m) m.addEventListener('click',function(e){if(e.target===this)closeLcModal();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLcModal();});
+  // Every estimate CTA button (Get a Free Estimate / Request a Free Estimate / FREE Estimates) opens the popup.
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('.btn-estimate, .btn-freeest');
+    if(a){ e.preventDefault(); openLcModal(); }
+  });
+})();
+</script>
 </body>
 </html>
