@@ -88,7 +88,7 @@
                   </ul>
       </span>
 
-      <a href="../#reviews">Testimonials</a>
+      <a href="../testimonials/">Testimonials</a>
       <a href="../contact/">Contact</a>
       <a href="../blog/">Blog</a>
     </nav>
@@ -116,9 +116,29 @@
     btn.classList.toggle('is-active', open);
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     btn.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+    if (!open) nav.querySelectorAll('.nav-drop.is-expanded').forEach(function (d) { d.classList.remove('is-expanded'); });
   }
   btn.addEventListener('click', function (e) { e.stopPropagation(); setOpen(!nav.classList.contains('is-open')); });
-  nav.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
+
+  // Mobile: tapping a dropdown parent (Tree Services / Service Areas) expands its
+  // submenu as an accordion instead of navigating or closing the whole menu.
+  nav.querySelectorAll('.nav-drop-top').forEach(function (top) {
+    top.addEventListener('click', function (e) {
+      if (window.innerWidth > 1080) return;            // desktop: normal link to hub page
+      e.preventDefault();
+      e.stopPropagation();
+      var drop = top.closest('.nav-drop');
+      var willOpen = !drop.classList.contains('is-expanded');
+      nav.querySelectorAll('.nav-drop.is-expanded').forEach(function (d) { if (d !== drop) d.classList.remove('is-expanded'); });
+      drop.classList.toggle('is-expanded', willOpen);
+    });
+  });
+
+  // Close the whole menu when a real destination link is tapped (but NOT the accordion parents).
+  nav.addEventListener('click', function (e) {
+    var a = e.target.closest('a');
+    if (a && !a.classList.contains('nav-drop-top')) setOpen(false);
+  });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
   document.addEventListener('click', function (e) {
     if (nav.classList.contains('is-open') && !nav.contains(e.target) && !btn.contains(e.target)) setOpen(false);
@@ -383,5 +403,23 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLcModal
   },4500);
 })();
 </script>
+
+<!-- Back to top -->
+<button id="tkrTop" class="tkr-top" type="button" aria-label="Back to top">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"../></svg>
+</button>
+<script id="tkr-back-to-top">
+(function(){
+  var t=document.getElementById('tkrTop');
+  if(!t)return;
+  function upd(){ t.classList.toggle('is-visible', window.pageYOffset > 400); }
+  window.addEventListener('scroll', upd, {passive:true});
+  upd();
+  t.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+})();
+</script>
+
+<!-- LeadConnector chat widget (matches live site) -->
+<script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="66c5e2dca07303457322ec81"></script>
 </body>
 </html>

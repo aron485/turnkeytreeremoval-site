@@ -618,7 +618,7 @@ h2,h3{font-weight:800;}
 .side-review-btn:hover{background:var(--amber-deep);color:#fff;}
 
 /* ============ MOBILE HAMBURGER NAV ============ */
-.nav-toggle{display:none;align-items:center;justify-content:center;width:46px;height:46px;padding:0;border:0;border-radius:12px;background:var(--cypress);cursor:pointer;flex:none;transition:background-color .2s;}
+.nav-toggle{display:none;flex-direction:column;align-items:center;justify-content:center;width:46px;height:46px;padding:0;border:0;border-radius:12px;background:var(--cypress);cursor:pointer;flex:none;transition:background-color .2s;}
 .nav-toggle:hover{background:var(--cypress-deep);}
 .nav-toggle-bar{display:block;width:22px;height:2.5px;border-radius:2px;background:#EAF3EF;transition:transform .25s ease,opacity .18s ease;}
 .nav-toggle-bar + .nav-toggle-bar{margin-top:5px;}
@@ -634,8 +634,53 @@ h2,h3{font-weight:800;}
   .main-nav.is-open > a,.main-nav.is-open .nav-drop-top{display:flex;align-items:center;padding:13px 24px;font-size:1rem;font-weight:700;border-bottom:1px solid rgba(18,63,57,.07);color:var(--ink);}
   .main-nav.is-open > a::after{display:none;}
   .main-nav.is-open .nav-drop{display:block;position:static;}
-  .main-nav.is-open .nav-menu{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;padding:2px 0 8px;min-width:0;background:rgba(18,63,57,.03);}
+  /* submenus collapsed by default on mobile; expand only the tapped parent */
+  .main-nav.is-open .nav-menu{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;padding:0;min-width:0;background:rgba(18,63,57,.03);overflow:hidden;max-height:0;transition:max-height .3s ease;}
+  .main-nav.is-open .nav-drop.is-expanded > .nav-menu{max-height:760px;padding:2px 0 8px;}
   .main-nav.is-open .nav-menu--cols{display:block;grid-template-columns:none;}
   .main-nav.is-open .nav-menu a{padding:10px 24px 10px 42px;font-size:.92rem;border-bottom:0;}
-  .main-nav.is-open .nav-caret{transform:rotate(180deg);}
+  .main-nav.is-open .nav-caret{transition:transform .25s ease;}
+  .main-nav.is-open .nav-drop.is-expanded > .nav-drop-top .nav-caret{transform:rotate(180deg);}
 }
+
+/* ============ SERVICES SECTION CTA ============ */
+.svc-all{display:flex;gap:14px;justify-content:center;align-items:center;flex-wrap:wrap;}
+
+/* ============ GALLERY SECTION CTA ============ */
+.gallery-cta{margin-top:40px;text-align:center;}
+.gallery-cta p{color:var(--ink);font-size:1.08rem;margin:0 auto 20px;max-width:52ch;}
+.gallery-cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+
+/* ============ TESTIMONIALS PAGE GRID ============ */
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.rev-grid .quote blockquote{color:var(--ink);font-size:.98rem;line-height:1.6;margin:0 0 18px;flex:1;}
+.rev-grid .stars{color:var(--amber);letter-spacing:2px;margin-bottom:12px;}
+@media (max-width:900px){.rev-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:600px){.rev-grid{grid-template-columns:1fr;}}
+
+/* ============ INSTAGRAM FEED ============ */
+#instagram{background:rgba(18,63,57,.05);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+#instagram .section-head{margin-bottom:32px;}
+#instagram .eyebrow a{color:var(--cypress-2);text-decoration:none;}
+#instagram .eyebrow a:hover{color:var(--amber-deep);}
+
+/* homepage reviews -> Testimonials page CTA */
+.rev-cta{text-align:center;margin-top:38px;}
+
+/* Testimonials page heading forced to one line (wraps again on small screens) */
+.rev-head{max-width:none;}
+.rev-head h2{white-space:nowrap;}
+.rev-head p{max-width:640px;margin-left:auto;margin-right:auto;}
+@media (max-width:680px){.rev-head h2{white-space:normal;}}
+
+/* ============ CTA BELOW PROCESS BAND ============ */
+.process-cta{margin-top:48px;text-align:center;}
+.process-cta-line{color:rgba(234,243,239,.9);font-size:1.08rem;line-height:1.5;max-width:62ch;margin:0 auto 24px;}
+.process-cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+
+/* ============ BACK-TO-TOP BUTTON ============ */
+.tkr-top{position:fixed;right:88px;bottom:26px;z-index:60;width:46px;height:46px;padding:0;border:0;border-radius:50%;background:var(--amber);color:#231703;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 22px rgba(11,42,37,.30);opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .25s ease,transform .25s ease,background-color .2s;}
+.tkr-top.is-visible{opacity:1;visibility:visible;transform:none;}
+.tkr-top:hover{background:var(--amber-deep);transform:translateY(-3px);}
+.tkr-top:focus-visible{outline:3px solid var(--amber);outline-offset:3px;}
+@media (max-width:600px){.tkr-top{right:76px;bottom:20px;width:42px;height:42px;}}
