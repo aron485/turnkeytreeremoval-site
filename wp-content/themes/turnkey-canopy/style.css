@@ -96,7 +96,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 /* ============================================================ HEADER */
 .site-header{position:sticky;top:0;z-index:60;background:rgba(247,245,239,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
 .header-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px 26px;max-width:1180px;margin:0 auto;}
-.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--cypress);flex:none;background:#fff;padding:7px 14px;border-radius:12px;border:1px solid var(--line);box-shadow:0 3px 12px rgba(18,63,57,.12);}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--cypress);flex:none;background:#fff;padding:7px 14px;border-radius:12px;box-shadow:0 3px 12px rgba(18,63,57,.12);}
 .logo svg{flex:none;}
 .logo-name{font-size:1.16rem;font-weight:700;letter-spacing:-.01em;line-height:1.05;}
 .logo-sub{display:block;font-size:.6rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--cypress-2);margin-top:2px;}
