@@ -318,9 +318,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   .hero-copy{max-width:none;}
   .hero-scrim{background:linear-gradient(180deg,rgba(247,245,239,.93) 0%,rgba(247,245,239,.88) 100%);}
 }
-@media (prefers-reduced-motion:reduce){
-  .hero-bg video{display:none;}
-}
+/* NOTE: intentionally NOT hiding the hero video under prefers-reduced-motion —
+   the client wants the moving background to always play. */
 
 /* ============================================================ V3 EDITS */
 /* bold fonts: nav, H1, bullets */
@@ -341,7 +340,10 @@ h1{font-weight:800;}
 .btn-estimate:hover{background:var(--cypress);transform:translateY(-2px);box-shadow:0 10px 24px rgba(18,63,57,.30);}
 
 /* hero: DARK background + two-column with form */
-.hero-scrim{background:linear-gradient(90deg,rgba(11,42,37,.94) 0%,rgba(12,45,40,.89) 46%,rgba(12,45,40,.82) 100%);}
+/* Final-CTA dark-green tone + amber glow, but graded lighter toward the right so the
+   moving canopy video stays VISIBLE (left stays dark for H1 legibility). */
+.hero-scrim{background:linear-gradient(100deg,rgba(11,42,37,.92) 0%,rgba(12,45,40,.84) 30%,rgba(12,45,40,.58) 64%,rgba(13,48,42,.44) 100%);}
+.hero::before{content:"";position:absolute;top:-20%;right:-6%;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(224,160,60,.28),transparent 65%);z-index:1;pointer-events:none;}
 .hero-grid2{display:grid;grid-template-columns:1.5fr 1fr;gap:56px;align-items:center;}
 .hero-copy{max-width:none;}
 .hero .eyebrow{color:var(--amber);}
@@ -684,3 +686,19 @@ h2,h3{font-weight:800;}
 .tkr-top:hover{background:var(--amber-deep);transform:translateY(-3px);}
 .tkr-top:focus-visible{outline:3px solid var(--amber);outline-offset:3px;}
 @media (max-width:600px){.tkr-top{right:76px;bottom:20px;width:42px;height:42px;}}
+
+/* ============ MOBILE/TABLET FULL-WIDTH STRETCH ============ */
+/* The 70% layout width is meant for large desktops; on tablet/phone it left
+   big side gutters (logo + hamburger sat far from the screen edge). Below the
+   nav breakpoint, stretch the theme to near-full-width with comfortable padding. */
+@media (max-width:1080px){
+  .wrap,.header-inner,.topbar-inner{width:auto;max-width:none;}
+  .wrap{padding-left:24px;padding-right:24px;}
+  .header-inner{padding-left:20px;padding-right:20px;}
+  .topbar-inner{padding-left:20px;padding-right:20px;}
+}
+@media (max-width:430px){
+  .wrap{padding-left:16px;padding-right:16px;}
+  .header-inner{padding-left:14px;padding-right:14px;}
+  .topbar-inner{padding-left:14px;padding-right:14px;}
+}

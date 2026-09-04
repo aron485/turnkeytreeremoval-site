@@ -357,6 +357,22 @@
 })();
 </script>
 
+<!-- Ensure muted background videos (hero + final CTA) actually autoplay -->
+<script id="tkr-bg-video-play">
+(function(){
+  function kick(){
+    document.querySelectorAll('video[autoplay]').forEach(function(v){
+      v.muted = true;                       // required for autoplay
+      var p = v.play();
+      if (p && p.catch) p.catch(function(){});
+    });
+  }
+  if (document.readyState !== 'loading') kick();
+  else document.addEventListener('DOMContentLoaded', kick);
+  window.addEventListener('load', kick);
+})();
+</script>
+
 <!-- Back to top -->
 <button id="tkrTop" class="tkr-top" type="button" aria-label="Back to top">
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"../></svg>

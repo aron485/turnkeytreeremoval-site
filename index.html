@@ -149,7 +149,7 @@
   <!-- ================= HERO ================= -->
   <section class="hero">
     <div class="hero-bg" style="background-image:url('./wp-content/themes/turnkey-canopy/assets/hero-poster.jpg')" aria-hidden="true">
-      <video autoplay muted loop playsinline>
+      <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="./wp-content/themes/turnkey-canopy/assets/hero-poster.jpg">
         <source src="./wp-content/themes/turnkey-canopy/assets/hero-bg.mp4" type="video/mp4">
       </video>
       <div class="hero-scrim"></div>
@@ -608,6 +608,22 @@
       q.style.opacity=1;w.style.opacity=1;
     },400);
   },4500);
+})();
+</script>
+
+<!-- Ensure muted background videos (hero + final CTA) actually autoplay -->
+<script id="tkr-bg-video-play">
+(function(){
+  function kick(){
+    document.querySelectorAll('video[autoplay]').forEach(function(v){
+      v.muted = true;                       // required for autoplay
+      var p = v.play();
+      if (p && p.catch) p.catch(function(){});
+    });
+  }
+  if (document.readyState !== 'loading') kick();
+  else document.addEventListener('DOMContentLoaded', kick);
+  window.addEventListener('load', kick);
 })();
 </script>
 
