@@ -408,6 +408,8 @@ function closeLcModal(){var m=document.getElementById('lcModal');if(!m)return;m.
   var m=document.getElementById('lcModal');
   if(m) m.addEventListener('click',function(e){if(e.target===this)closeLcModal();});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLcModal();});
+  // Point every CTA link at /contact/ (real page) instead of #hero-form — the popup still opens on click.
+  document.querySelectorAll('a.btn-estimate, a.btn-freeest').forEach(function(a){ a.setAttribute('href','../contact/'); });
   // Every estimate CTA button (Get a Free Estimate / Request a Free Estimate / FREE Estimates) opens the popup.
   document.addEventListener('click',function(e){
     var a=e.target.closest('.btn-estimate, .btn-freeest');
