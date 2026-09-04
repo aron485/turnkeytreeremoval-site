@@ -96,7 +96,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 /* ============================================================ HEADER */
 .site-header{position:sticky;top:0;z-index:60;background:rgba(247,245,239,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
 .header-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px 26px;max-width:1180px;margin:0 auto;}
-.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--cypress);flex:none;}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--cypress);flex:none;background:#fff;padding:7px 14px;border-radius:12px;border:1px solid var(--line);box-shadow:0 3px 12px rgba(18,63,57,.12);}
 .logo svg{flex:none;}
 .logo-name{font-size:1.16rem;font-weight:700;letter-spacing:-.01em;line-height:1.05;}
 .logo-sub{display:block;font-size:.6rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--cypress-2);margin-top:2px;}
@@ -338,6 +338,10 @@ h1{font-weight:800;}
 /* Free Estimate button — complements the amber Call button */
 .btn-estimate{background:var(--cypress-2);color:#EAF3EF;border-color:transparent;}
 .btn-estimate:hover{background:var(--cypress);transform:translateY(-2px);box-shadow:0 10px 24px rgba(18,63,57,.30);}
+/* On dark-green sections the estimate button's hover fill matched the background and its
+   outline vanished — keep a visible light border in both states and don't collapse the fill. */
+.band .btn-estimate,.final .btn-estimate,.hero .btn-estimate{border-color:rgba(234,243,239,.34);}
+.band .btn-estimate:hover,.final .btn-estimate:hover,.hero .btn-estimate:hover{background:var(--cypress-2);border-color:rgba(234,243,239,.72);box-shadow:0 8px 22px rgba(0,0,0,.30);}
 
 /* hero: DARK background + two-column with form */
 /* Final-CTA dark-green tone + amber glow, but graded lighter toward the right so the
@@ -601,9 +605,9 @@ h2,h3{font-weight:800;}
 .post-body>p:first-of-type{font-size:1.14rem;color:var(--ink);}
 .post-body h2{font-size:clamp(1.4rem,2.6vw,1.85rem);color:var(--cypress);margin:1.7em 0 .5em;font-weight:800;letter-spacing:-.015em;}
 .post-body h3{font-size:1.18rem;color:var(--ink);margin:1.5em 0 .4em;font-weight:800;}
-.post-body p{color:var(--muted);}
+.post-body p{color:var(--ink);}
 .post-body strong{color:var(--ink);}
-.post-body ul,.post-body ol{color:var(--muted);padding-left:1.3em;margin:0 0 1em;}
+.post-body ul,.post-body ol{color:var(--ink);padding-left:1.3em;margin:0 0 1em;}
 .post-body li{margin-bottom:.42em;}
 .post-body a{color:var(--cypress-2);font-weight:600;text-underline-offset:3px;}
 .post-body a:hover{color:var(--amber-deep);}
@@ -702,3 +706,12 @@ h2,h3{font-weight:800;}
   .header-inner{padding-left:14px;padding-right:14px;}
   .topbar-inner{padding-left:14px;padding-right:14px;}
 }
+
+/* ============ SERVICE/CITY BODY PARAGRAPHS -> BLACK ============ */
+/* Beats the per-page inline `.article p{color:var(--muted)}` via higher specificity.
+   Subheading colours (h2 = cypress green) are left untouched. */
+.page-layout .article p,.page-layout .article li{color:var(--ink);}
+
+/* ============ SERVICE/CITY SIDEBAR = FEATURED IMAGE ============ */
+.side-figure{margin:0;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line);}
+.side-figure img{display:block;width:100%;height:auto;object-fit:cover;}
