@@ -94,16 +94,16 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 }
 
 /* ============================================================ HEADER */
-.site-header{position:sticky;top:0;z-index:60;background:rgba(14,51,46,.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(234,243,239,.12);}
+.site-header{position:sticky;top:0;z-index:60;background:#fff;border-bottom:1px solid var(--line);}
 .header-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px 26px;max-width:1180px;margin:0 auto;}
 .logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--cypress);flex:none;}
 .logo svg{flex:none;}
 .logo-name{font-size:1.16rem;font-weight:700;letter-spacing:-.01em;line-height:1.05;}
 .logo-sub{display:block;font-size:.6rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--cypress-2);margin-top:2px;}
 .main-nav{display:flex;gap:28px;}
-.main-nav a{color:rgba(234,243,239,.92);text-decoration:none;font-size:.92rem;font-weight:600;padding:6px 0;position:relative;transition:color .2s;}
+.main-nav a{color:var(--ink);text-decoration:none;font-size:.92rem;font-weight:600;padding:6px 0;position:relative;transition:color .2s;}
 .main-nav a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--amber);transition:width .25s;}
-.main-nav a:hover{color:#fff;}
+.main-nav a:hover{color:var(--cypress);}
 .main-nav a:hover::after{width:100%;}
 .header-cta{display:inline-flex;align-items:center;gap:9px;background:var(--amber);color:#231703;font-weight:700;font-size:.95rem;padding:11px 22px;border-radius:999px;text-decoration:none;white-space:nowrap;flex:none;transition:background-color .2s,transform .2s;}
 .header-cta:hover{background:var(--amber-deep);transform:translateY(-1px);}
@@ -624,8 +624,8 @@ h2,h3{font-weight:800;}
 .side-review-btn:hover{background:var(--amber-deep);color:#fff;}
 
 /* ============ MOBILE HAMBURGER NAV ============ */
-.nav-toggle{display:none;flex-direction:column;align-items:center;justify-content:center;width:46px;height:46px;padding:0;border:1px solid rgba(234,243,239,.32);border-radius:12px;background:rgba(234,243,239,.14);cursor:pointer;flex:none;transition:background-color .2s;}
-.nav-toggle:hover{background:rgba(234,243,239,.24);}
+.nav-toggle{display:none;flex-direction:column;align-items:center;justify-content:center;width:46px;height:46px;padding:0;border:0;border-radius:12px;background:var(--cypress);cursor:pointer;flex:none;transition:background-color .2s;}
+.nav-toggle:hover{background:var(--cypress-deep);}
 .nav-toggle-bar{display:block;width:22px;height:2.5px;border-radius:2px;background:#EAF3EF;transition:transform .25s ease,opacity .18s ease;}
 .nav-toggle-bar + .nav-toggle-bar{margin-top:5px;}
 .nav-toggle.is-active .nav-toggle-bar:nth-child(1){transform:translateY(7.5px) rotate(45deg);}
